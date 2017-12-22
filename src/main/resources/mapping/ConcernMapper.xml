@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.yiliya.dao.ConcernMapper">
+  <resultMap id="BaseResultMap" type="xin.yiliya.pojo.Concern">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="concerner_id" jdbcType="INTEGER" property="concernerId" />
+    <result column="concerned_id" jdbcType="INTEGER" property="concernedId" />
+    <result column="concern_time" jdbcType="TIMESTAMP" property="concernTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, concerner_id, concerned_id, concern_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from concern
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from concern
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="xin.yiliya.pojo.Concern">
+    insert into concern (id, concerner_id, concerned_id, 
+      concern_time)
+    values (#{id,jdbcType=INTEGER}, #{concernerId,jdbcType=INTEGER}, #{concernedId,jdbcType=INTEGER}, 
+      #{concernTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Concern">
+    insert into concern
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="concernerId != null">
+        concerner_id,
+      </if>
+      <if test="concernedId != null">
+        concerned_id,
+      </if>
+      <if test="concernTime != null">
+        concern_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="concernerId != null">
+        #{concernerId,jdbcType=INTEGER},
+      </if>
+      <if test="concernedId != null">
+        #{concernedId,jdbcType=INTEGER},
+      </if>
+      <if test="concernTime != null">
+        #{concernTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.yiliya.pojo.Concern">
+    update concern
+    <set>
+      <if test="concernerId != null">
+        concerner_id = #{concernerId,jdbcType=INTEGER},
+      </if>
+      <if test="concernedId != null">
+        concerned_id = #{concernedId,jdbcType=INTEGER},
+      </if>
+      <if test="concernTime != null">
+        concern_time = #{concernTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.yiliya.pojo.Concern">
+    update concern
+    set concerner_id = #{concernerId,jdbcType=INTEGER},
+      concerned_id = #{concernedId,jdbcType=INTEGER},
+      concern_time = #{concernTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

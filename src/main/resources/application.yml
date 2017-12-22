@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        druid:
+          name: test
+          url: jdbc:mysql://127.0.0.1:3306/experiment
+          username: root
+          password: 15869105934
+          driver-class-name: com.mysql.jdbc.Driver
+          filters: stat
+          maxActive: 20
+          initialSize: 1
+          maxWait: 60000
+          minIdle: 1
+          timeBetweenEvictionRunsMillis: 60000
+          minEvictableIdleTimeMillis: 300000
+          validationQuery: select 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+          poolPreparedStatements: true
+          maxOpenPreparedStatements: 20
+    #thymeleaf start
+    thymeleaf:
+      mode: HTML5
+      encoding: UTF-8
+      content-type: text/html
+      cache: false
+    #thymeleaf end
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: xin.yiliya.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+#log4j2
+logging:
+  config: classpath:log4j2/log4j2.xml
+
