@@ -23,24 +23,11 @@ spring:
           testOnReturn: false
           poolPreparedStatements: true
           maxOpenPreparedStatements: 20
-    #thymeleaf start
-    thymeleaf:
-      mode: HTML5
-      encoding: UTF-8
-      content-type: text/html
-      cache: false
-    #thymeleaf end
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: xin.yiliya.pojo
   config-location: classpath:mybatis/mybatis-config.xml
 
-#pagehelper分页插件
-pagehelper:
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    params: count=countSql
 #log4j2
 logging:
   config: classpath:log4j2/log4j2.xml
