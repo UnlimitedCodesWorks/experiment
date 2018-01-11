@@ -6,7 +6,7 @@
 	<groupId>xin.yiliya</groupId>
 	<artifactId>experiment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>experiment</name>
 	<description>Demo project for Spring Boot</description>
@@ -112,6 +112,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<!--打包方式：取消掉下面一行注释-->
+			<!--Build&#45;&#45;》Build Artifacts&#45;&#45;》experiment:war-->
+			<!--<scope>provided</scope>-->
 		</dependency>
 	</dependencies>
 
