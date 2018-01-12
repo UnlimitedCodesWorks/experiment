@@ -3,6 +3,8 @@ package xin.yiliya.dao;
 import org.apache.ibatis.annotations.Param;
 import xin.yiliya.pojo.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -17,4 +19,8 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User login(@Param("number") String num, @Param("password") String pass);
+
+    User getUserInfoById(Integer userId);
+
+    List<User> getFriendsById(Integer userId);
 }

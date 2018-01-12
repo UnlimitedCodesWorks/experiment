@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xin.yiliya.dao.UserMapper;
 import xin.yiliya.pojo.User;
+import xin.yiliya.pojo.UserLaunch;
 import xin.yiliya.service.UserService;
 
 @Service
@@ -23,5 +24,13 @@ public class UserServiceImpl implements UserService{
         else{
             return user.getId();
         }
+    }
+
+    @Override
+    public UserLaunch getLaunchInfo(Integer userId) {
+        UserLaunch userLaunch=new UserLaunch();
+        userLaunch.setUser(userMapper.getUserInfoById(userId));
+        userLaunch.setFriends(userMapper.getFriendsById(userId));
+        return userLaunch;
     }
 }

@@ -117,4 +117,11 @@
   <select id="login" resultMap="BaseResultMap">
     SELECT * FROM `user` WHERE user_num=#{number} AND user_pass=md5(#{password})
   </select>
+  <select id="getUserInfoById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM `user` WHERE `user`.id=#{userId}
+  </select>
+  <select id="getFriendsById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM `user`
+    WHERE `user`.id in (SELECT friends.friend_id FROM friends WHERE friends.user_id=#{userId})
+  </select>
 </mapper>
