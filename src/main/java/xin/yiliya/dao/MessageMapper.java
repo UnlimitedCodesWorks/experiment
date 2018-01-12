@@ -1,10 +1,7 @@
 package xin.yiliya.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 import xin.yiliya.pojo.Message;
-@Repository
-@Mapper
+
 public interface MessageMapper {
     int deleteByPrimaryKey(Integer id);
 
