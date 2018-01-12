@@ -1,7 +1,11 @@
 package xin.yiliya.dao;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import xin.yiliya.pojo.User;
-
+@Repository
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User login(@Param("number") String num, @Param("password") String pass);
 }

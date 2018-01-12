@@ -114,4 +114,7 @@
       user_introduce = #{userIntroduce,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="login" resultMap="BaseResultMap">
+    SELECT * FROM `user` WHERE user_num=#{number} AND user_pass=md5(#{password})
+  </select>
 </mapper>
