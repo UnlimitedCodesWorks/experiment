@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.yiliya.dao.MessageMapper">
+  <resultMap id="BaseResultMap" type="xin.yiliya.pojo.Message">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="send_id" jdbcType="INTEGER" property="sendId" />
+    <result column="receive_id" jdbcType="INTEGER" property="receiveId" />
+    <result column="read_status" jdbcType="INTEGER" property="readStatus" />
+    <result column="msg_time" jdbcType="TIMESTAMP" property="msgTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, content, send_id, receive_id, read_status, msg_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="xin.yiliya.pojo.Message">
+    insert into message (id, content, send_id, 
+      receive_id, read_status, msg_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{sendId,jdbcType=INTEGER}, 
+      #{receiveId,jdbcType=INTEGER}, #{readStatus,jdbcType=INTEGER}, #{msgTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Message">
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="sendId != null">
+        send_id,
+      </if>
+      <if test="receiveId != null">
+        receive_id,
+      </if>
+      <if test="readStatus != null">
+        read_status,
+      </if>
+      <if test="msgTime != null">
+        msg_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="sendId != null">
+        #{sendId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveId != null">
+        #{receiveId,jdbcType=INTEGER},
+      </if>
+      <if test="readStatus != null">
+        #{readStatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgTime != null">
+        #{msgTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xin.yiliya.pojo.Message">
+    update message
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="sendId != null">
+        send_id = #{sendId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveId != null">
+        receive_id = #{receiveId,jdbcType=INTEGER},
+      </if>
+      <if test="readStatus != null">
+        read_status = #{readStatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgTime != null">
+        msg_time = #{msgTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xin.yiliya.pojo.Message">
+    update message
+    set content = #{content,jdbcType=VARCHAR},
+      send_id = #{sendId,jdbcType=INTEGER},
+      receive_id = #{receiveId,jdbcType=INTEGER},
+      read_status = #{readStatus,jdbcType=INTEGER},
+      msg_time = #{msgTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
