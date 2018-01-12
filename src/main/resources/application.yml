@@ -7,9 +7,9 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
           name: test
-          url: jdbc:mysql://127.0.0.1:3306/experiment
+          url: jdbc:mysql://101.132.171.77:3306/netqq?
           username: root
-          password: 15869105934
+          password: unlimlitedCodesWork%MysqlDB
           driver-class-name: com.mysql.jdbc.Driver
           filters: stat
           maxActive: 20
