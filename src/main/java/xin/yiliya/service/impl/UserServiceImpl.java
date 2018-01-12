@@ -8,6 +8,8 @@ import xin.yiliya.pojo.User;
 import xin.yiliya.pojo.UserLaunch;
 import xin.yiliya.service.UserService;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService{
@@ -32,5 +34,15 @@ public class UserServiceImpl implements UserService{
         userLaunch.setUser(userMapper.getUserInfoById(userId));
         userLaunch.setFriends(userMapper.getFriendsById(userId));
         return userLaunch;
+    }
+
+    @Override
+    public List<User> getUsersByNumber(String num) {
+        return userMapper.getUsersByNumber(num);
+    }
+
+    @Override
+    public List<User> getUsersByName(String name) {
+        return userMapper.getUsersByName(name);
     }
 }

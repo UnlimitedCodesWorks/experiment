@@ -23,4 +23,8 @@ public interface UserMapper {
     User getUserInfoById(Integer userId);
 
     List<User> getFriendsById(Integer userId);
+
+    List<User> getUsersByNumber(@Param("num") String num);
+
+    List<User> getUsersByName(@Param("name") String name);
 }

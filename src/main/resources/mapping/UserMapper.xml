@@ -124,4 +124,10 @@
     SELECT * FROM `user`
     WHERE `user`.id in (SELECT friends.friend_id FROM friends WHERE friends.user_id=#{userId})
   </select>
+  <select id="getUsersByNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM `user` WHERE `user`.user_num LIKE '%${num}%'
+  </select>
+  <select id="getUsersByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM `user` WHERE `user`.user_name LIKE '%${name}%'
+  </select>
 </mapper>
