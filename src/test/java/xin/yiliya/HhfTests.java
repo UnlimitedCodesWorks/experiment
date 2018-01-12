@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import xin.yiliya.pojo.User;
 import xin.yiliya.service.UserService;
 
 import java.util.List;
@@ -35,6 +34,9 @@ public class HhfTests {
 //        List<User> users=userService.getUsersByName("h");
 //        System.out.println(JSON.toJSONString(users,true));
 
+        //删除好友
+//        Boolean b=userService.deleteFriendByNumber(1,"1150299177");
+//        System.out.println(b);
     }
 
 }

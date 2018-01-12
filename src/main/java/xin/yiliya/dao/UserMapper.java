@@ -27,4 +27,10 @@ public interface UserMapper {
     List<User> getUsersByNumber(@Param("num") String num);
 
     List<User> getUsersByName(@Param("name") String name);
+
+    int deleteFriendByNumber(@Param("myId") Integer myId,@Param("friendId") Integer friendId);
+
+    int deleteOfFriendByNumber(@Param("myId") Integer myId,@Param("friendId") Integer friendId);
+
+    int selectIdByNumber(String number);
 }

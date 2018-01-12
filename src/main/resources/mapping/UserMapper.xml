@@ -130,4 +130,13 @@
   <select id="getUsersByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     SELECT * FROM `user` WHERE `user`.user_name LIKE '%${name}%'
   </select>
+  <delete id="deleteFriendByNumber" parameterType="java.lang.Integer">
+    DELETE FROM friends WHERE user_id=#{myId} AND friend_id=#{friendId}
+  </delete>
+  <delete id="deleteOfFriendByNumber" parameterType="java.lang.Integer">
+    DELETE FROM friends WHERE user_id=#{friendId} AND friend_id=#{myId}
+  </delete>
+  <select id="selectIdByNumber" parameterType="java.lang.String" resultType="Integer">
+    SELECT `user`.id FROM `user` WHERE `user`.user_num=#{number}
+  </select>
 </mapper>

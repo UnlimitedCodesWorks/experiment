@@ -45,4 +45,16 @@ public class UserServiceImpl implements UserService{
     public List<User> getUsersByName(String name) {
         return userMapper.getUsersByName(name);
     }
+
+    @Override
+    public Boolean deleteFriendByNumber(Integer myId,String friendNumber) {
+        try{
+            Integer friendId=userMapper.selectIdByNumber(friendNumber);
+            userMapper.deleteFriendByNumber(myId,friendId);
+            userMapper.deleteOfFriendByNumber(myId,friendId);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }

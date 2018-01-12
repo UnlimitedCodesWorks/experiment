@@ -25,4 +25,9 @@ public interface UserService {
     //返回List对象
     List<User> getUsersByName(String name);
 
+    //删除好友
+    //参数：自己的数据库Id号（Integer），朋友的账号number（String）
+    //删除成功则返回true，不成功则为false
+    Boolean deleteFriendByNumber(Integer myId,String friendNumber);
+
 }
