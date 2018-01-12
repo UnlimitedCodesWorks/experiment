@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xin.yiliya.dao.UserMapper;
+import xin.yiliya.pojo.User;
 import xin.yiliya.service.UserService;
 
 @Service
@@ -15,6 +16,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Integer login(String num, String pass) {
-        return userMapper.login(num,pass);
+        User user = userMapper.login(num,pass);
+        if(user==null){
+            return 0;
+        }
+        else{
+            return user.getId();
+        }
     }
 }

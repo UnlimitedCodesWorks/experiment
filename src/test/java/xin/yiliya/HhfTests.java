@@ -18,7 +18,7 @@ public class HhfTests {
     public void hhfTest() {
 
         //用户登陆
-        System.out.println(userService.login("1150299165","12345"));
+        System.out.println(userService.login("1150299199","12345"));
 
     }
 
