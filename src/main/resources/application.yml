@@ -7,7 +7,7 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
           name: test
-          url: jdbc:mysql://101.132.171.77:3306/netqq?
+          url: jdbc:mysql://101.132.171.77:3306/netqq?characterEncoding=utf8&useSSL=true
           username: root
           password: unlimlitedCodesWork%MysqlDB
           driver-class-name: com.mysql.jdbc.Driver
