@@ -17,7 +17,7 @@ public interface UserService {
     Integer Register(User user);
 
     /**
-     *
+     *用户修改信息
      * @param user
      * @return 修改成功返回id，否则返回0
      */
