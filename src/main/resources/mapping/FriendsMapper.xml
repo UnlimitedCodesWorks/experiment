@@ -114,4 +114,13 @@
       </if>
     </trim>
   </insert>
+  <update id="sureFriend" parameterType="xin.yiliya.pojo.Friends">
+    UPDATE friends SET confirm_status=1
+    WHERE (friends.user_id=#{userId} AND friends.friend_id=#{friendId})
+    OR (friends.user_id=#{friendId} AND friends.friend_id=#{userId})
+  </update>
+  <delete id="refuseFriend" parameterType="xin.yiliya.pojo.Friends">
+    DELETE FROM friends WHERE user_id=#{userId} AND friend_id=#{friendId} AND confirm_status=0
+    OR user_id=#{friendId} AND friend_id=#{userId} AND confirm_status=0
+  </delete>
 </mapper>

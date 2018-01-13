@@ -18,4 +18,8 @@ public interface FriendsMapper {
     int deleteMyFriend(Friends friends);
 
     int addFaceFriend(Friends friends);
+
+    int sureFriend(Friends friends);
+
+    int refuseFriend(Friends friends);
 }

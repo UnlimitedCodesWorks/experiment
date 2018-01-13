@@ -58,6 +58,18 @@ public class HhfTests {
 //        friends.setFriendId(3);
 //        System.out.println(friendsService.addFriend(friends));
 
+        //同意好友添加
+//        Friends friends=new Friends();
+//        friends.setUserId(2);
+//        friends.setFriendId(1);
+//        System.out.println(friendsService.sureFriend(friends));
+
+        //拒绝好友添加
+//        Friends friends=new Friends();
+//        friends.setUserId(1);
+//        friends.setFriendId(2);
+//        System.out.println(friendsService.refuseFriend(friends));
+
         //删除好友
 //        Friends friends = new Friends();
 //        friends.setUserId(1);

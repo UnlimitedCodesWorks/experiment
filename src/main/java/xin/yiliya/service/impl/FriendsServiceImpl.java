@@ -28,6 +28,28 @@ public class FriendsServiceImpl implements FriendsService{
     }
 
     @Override
+    public Boolean sureFriend(Friends friends) {
+        try{
+            friendsMapper.sureFriend(friends);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean refuseFriend(Friends friends) {
+        try{
+            friendsMapper.refuseFriend(friends);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public Boolean deleteFriend(Friends friends) {
         try{
             friendsMapper.deleteMyFriend(friends);
