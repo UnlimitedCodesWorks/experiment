@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import xin.yiliya.service.MessageService;
 import xin.yiliya.service.UserService;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class HhfTests {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    MessageService messageService;
 
     @Test
     public void hhfTest() {
@@ -37,6 +41,11 @@ public class HhfTests {
         //删除好友
 //        Boolean b=userService.deleteFriendByNumber(1,"1150299177");
 //        System.out.println(b);
+
+
+    //发送消息
+//        int state=messageService.sendMessage("你好",1,2);
+//        System.out.println(state);
     }
 
 }
