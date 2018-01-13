@@ -103,4 +103,9 @@
       msg_time = #{msgTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUserId" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM `message`
+    WHERE `message`.receive_id=#{userId}
+  </select>
 </mapper>

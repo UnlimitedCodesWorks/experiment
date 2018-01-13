@@ -8,6 +8,7 @@ import xin.yiliya.pojo.Message;
 import xin.yiliya.service.MessageService;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -28,5 +29,11 @@ public class MessageServiceImpl implements MessageService {
         message.setMsgTime(now);
         message.setReadStatus(0);
         return messageMapper.insertSelective(message);
+    }
+
+    @Override
+    public List<Message> getMessagesByUser(int userId) {
+        return messageMapper.selectByUserId(userId);
+
     }
 }

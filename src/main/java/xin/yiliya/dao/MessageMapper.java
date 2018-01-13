@@ -2,6 +2,8 @@ package xin.yiliya.dao;
 
 import xin.yiliya.pojo.Message;
 
+import java.util.List;
+
 public interface MessageMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -10,6 +12,8 @@ public interface MessageMapper {
     int insertSelective(Message record);
 
     Message selectByPrimaryKey(Integer id);
+
+    List<Message> selectByUserId(Integer userId);
 
     int updateByPrimaryKeySelective(Message record);
 

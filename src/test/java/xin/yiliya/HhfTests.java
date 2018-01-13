@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import xin.yiliya.pojo.Message;
 import xin.yiliya.service.MessageService;
 import xin.yiliya.service.UserService;
 
@@ -46,6 +47,11 @@ public class HhfTests {
     //发送消息
 //        int state=messageService.sendMessage("你好",1,2);
 //        System.out.println(state);
+
+
+        //查询消息
+ //       List<Message> messages=messageService.getMessagesByUser(2);
+ //       System.out.println(JSON.toJSONString(messages,true));
     }
 
 }
