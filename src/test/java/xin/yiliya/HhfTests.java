@@ -45,8 +45,8 @@ public class HhfTests {
 //        //用户登陆
 //        System.out.println(userService.login("1150299165","12345"));
 
-//        //主界面信息
-//        System.out.println(JSON.toJSONString(userService.getLaunchInfo(1),true));
+        //主界面信息
+//        System.out.println(JSON.toJSONString(userService.getLaunchInfo(5),true));
 
         //根据账号查找用户
 //        List<User> users=userService.getUsersByInput("1150");
