@@ -121,6 +121,12 @@
 			<!--Build&#45;&#45;》Build Artifacts&#45;&#45;》experiment:war-->
 			<!--<scope>provided</scope>-->
 		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>

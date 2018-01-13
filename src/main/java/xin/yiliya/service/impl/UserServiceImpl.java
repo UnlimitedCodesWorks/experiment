@@ -1,5 +1,6 @@
 package xin.yiliya.service.impl;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,7 +8,6 @@ import xin.yiliya.dao.UserMapper;
 import xin.yiliya.pojo.User;
 import xin.yiliya.pojo.UserLaunch;
 import xin.yiliya.service.UserService;
-
 import java.util.List;
 
 @Service
@@ -16,6 +16,35 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserMapper userMapper;
+
+    @Override
+    public Integer Register(User user) {
+        try{
+            String password=user.getUserPass();
+            user.setUserPass(DigestUtils.md5Hex(password));
+            userMapper.insertSelective(user);
+            return user.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+
+    }
+
+    @Override
+    public Integer updateInfo(User user) {
+        try{
+            String password=user.getUserPass();
+            if(password!=null){
+                user.setUserPass(DigestUtils.md5Hex(password));
+            }
+            userMapper.updateByPrimaryKeySelective(user);
+            return user.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     @Override
     public Integer login(String num, String pass) {
@@ -37,24 +66,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> getUsersByNumber(String num) {
-        return userMapper.getUsersByNumber(num);
+    public List<User> getUsersByInput(String input) {
+        return userMapper.getUsersByInput(input);
     }
 
-    @Override
-    public List<User> getUsersByName(String name) {
-        return userMapper.getUsersByName(name);
-    }
-
-    @Override
-    public Boolean deleteFriendByNumber(Integer myId,String friendNumber) {
-        try{
-            Integer friendId=userMapper.selectIdByNumber(friendNumber);
-            userMapper.deleteFriendByNumber(myId,friendId);
-            userMapper.deleteOfFriendByNumber(myId,friendId);
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-    }
 }

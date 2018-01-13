@@ -14,4 +14,6 @@ public interface FriendsMapper {
     int updateByPrimaryKeySelective(Friends record);
 
     int updateByPrimaryKey(Friends record);
+
+    int deleteMyFriend(Friends friends);
 }

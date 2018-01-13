@@ -31,7 +31,7 @@
       #{userPass,jdbcType=VARCHAR}, #{userHead,jdbcType=VARCHAR}, #{userGender,jdbcType=VARCHAR}, 
       #{userIntroduce,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="xin.yiliya.pojo.User">
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.User" keyProperty="id" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="xin.yiliya.pojo.User">
+  <update id="updateByPrimaryKeySelective" parameterType="xin.yiliya.pojo.User" keyProperty="id" useGeneratedKeys="true">
     update user
     <set>
       <if test="userName != null">
@@ -124,19 +124,7 @@
     SELECT * FROM `user`
     WHERE `user`.id in (SELECT friends.friend_id FROM friends WHERE friends.user_id=#{userId})
   </select>
-  <select id="getUsersByNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT * FROM `user` WHERE `user`.user_num LIKE '%${num}%'
-  </select>
-  <select id="getUsersByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT * FROM `user` WHERE `user`.user_name LIKE '%${name}%'
-  </select>
-  <delete id="deleteFriendByNumber" parameterType="java.lang.Integer">
-    DELETE FROM friends WHERE user_id=#{myId} AND friend_id=#{friendId}
-  </delete>
-  <delete id="deleteOfFriendByNumber" parameterType="java.lang.Integer">
-    DELETE FROM friends WHERE user_id=#{friendId} AND friend_id=#{myId}
-  </delete>
-  <select id="selectIdByNumber" parameterType="java.lang.String" resultType="Integer">
-    SELECT `user`.id FROM `user` WHERE `user`.user_num=#{number}
+  <select id="getUsersByInput" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM `user` WHERE CONCAT(`user`.user_name,`user`.user_num) LIKE '%${input}%'
   </select>
 </mapper>
