@@ -15,6 +15,19 @@ public class FriendsServiceImpl implements FriendsService{
     private FriendsMapper friendsMapper;
 
     @Override
+    public Boolean addFriend(Friends friends) {
+        try{
+            friends.setConfirmStatus(0);
+            friendsMapper.insertSelective(friends);
+            friendsMapper.addFaceFriend(friends);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public Boolean deleteFriend(Friends friends) {
         try{
             friendsMapper.deleteMyFriend(friends);

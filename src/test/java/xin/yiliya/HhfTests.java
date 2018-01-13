@@ -52,6 +52,12 @@ public class HhfTests {
 //        List<User> users=userService.getUsersByInput("1150");
 //        System.out.println(JSON.toJSONString(users,true));
 
+        //添加好友
+//        Friends friends = new Friends();
+//        friends.setUserId(2);
+//        friends.setFriendId(3);
+//        System.out.println(friendsService.addFriend(friends));
+
         //删除好友
 //        Friends friends = new Friends();
 //        friends.setUserId(1);
