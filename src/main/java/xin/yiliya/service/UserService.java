@@ -29,4 +29,9 @@ public interface UserService {
     //返回List对象
     List<User> getUsersByInput(String input);
 
+    //好友申请请求
+    //参数：用户id
+    //返回：发来请求的好友List
+    List<User> usersOfRequireList(Integer userId);
+
 }

@@ -26,4 +26,6 @@ public interface UserMapper {
 
     List<User> getUsersByInput(@Param("input") String input);
 
+    List<User> usersOfRequireList(Integer userId);
+
 }

@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xin.yiliya.dao.FriendsMapper;
+import xin.yiliya.dao.UserMapper;
 import xin.yiliya.pojo.Friends;
+import xin.yiliya.pojo.User;
 import xin.yiliya.service.FriendsService;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -13,6 +17,9 @@ public class FriendsServiceImpl implements FriendsService{
 
     @Autowired
     private FriendsMapper friendsMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public Boolean addFriend(Friends friends) {
@@ -59,4 +66,5 @@ public class FriendsServiceImpl implements FriendsService{
             return false;
         }
     }
+
 }

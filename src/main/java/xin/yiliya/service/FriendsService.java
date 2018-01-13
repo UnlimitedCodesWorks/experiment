@@ -2,6 +2,9 @@ package xin.yiliya.service;
 
 import org.springframework.stereotype.Service;
 import xin.yiliya.pojo.Friends;
+import xin.yiliya.pojo.User;
+
+import java.util.List;
 
 @Service
 public interface FriendsService {
@@ -29,6 +32,5 @@ public interface FriendsService {
     //返回：如果删除成功为true，不成功为false
     //两边好友都会删除
     Boolean deleteFriend(Friends friends);
-
 
 }

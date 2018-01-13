@@ -1,6 +1,9 @@
 package xin.yiliya.dao;
 
 import xin.yiliya.pojo.Friends;
+import xin.yiliya.pojo.User;
+
+import java.util.List;
 
 public interface FriendsMapper {
     int deleteByPrimaryKey(Integer id);

@@ -76,6 +76,9 @@ public class HhfTests {
 //        friends.setFriendId(2);
 //        Boolean b=friendsService.deleteFriend(friends);
 //        System.out.println(b);
+
+//        //好友申请请求
+//        System.out.println(JSON.toJSONString(userService.usersOfRequireList(1),true));
     }
 
 }

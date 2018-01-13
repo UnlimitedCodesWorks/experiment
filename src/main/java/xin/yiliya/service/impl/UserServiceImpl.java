@@ -70,4 +70,9 @@ public class UserServiceImpl implements UserService{
         return userMapper.getUsersByInput(input);
     }
 
+    @Override
+    public List<User> usersOfRequireList(Integer userId) {
+        return userMapper.usersOfRequireList(userId);
+    }
+
 }
