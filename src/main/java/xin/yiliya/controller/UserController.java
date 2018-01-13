@@ -2,10 +2,7 @@ package xin.yiliya.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import xin.yiliya.pojo.User;
 import xin.yiliya.pojo.UserLaunch;
 import xin.yiliya.service.UserService;
@@ -17,15 +14,15 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * 用户注册
      * @param user 用户User类
      * @return 用户的id，若失败则返回0
      */
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public Integer registerDo(User user){
+    @RequestMapping(value = "/register",consumes = "application/json",method = RequestMethod.POST)
+    public Integer registerDo(@RequestBody User user){
         return userService.Register(user);
     }
 
@@ -46,8 +43,8 @@ public class UserController {
      * @param user
      * @return 修改成功返回id，否则返回0
      */
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public Integer updateInfoDo(User user){
+    @RequestMapping(value = "/update",consumes = "application/json",method = RequestMethod.POST)
+    public Integer updateInfoDo(@RequestBody User user){
         return userService.updateInfo(user);
     }
 
