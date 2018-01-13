@@ -20,14 +20,8 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public Integer sendMessage(String content, int sendId, int receiveId) {
-        Message message=new Message();
-        message.setSendId(sendId);
-        message.setReceiveId(receiveId);
-        Date now=new Date();
-        message.setContent(content);
-        message.setMsgTime(now);
-        message.setReadStatus(0);
+    public Integer sendMessage(Message message) {
+
         return messageMapper.insertSelective(message);
     }
 

@@ -13,7 +13,7 @@ public interface MessageService {
     //发送消息
     //参数：消息内容，自己的Id（sendId），接受用户Id（receiveId）
     //发送成功则返回1，失败返回0
-    Integer sendMessage(String content, int sendId,int receiveId);
+    Integer sendMessage(Message message);
 
 
     //查询消息
