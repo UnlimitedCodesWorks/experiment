@@ -13,6 +13,8 @@ public interface MessageMapper {
 
     Message selectByPrimaryKey(Integer id);
 
+    Message selectOneByUser(Integer userId);
+
     List<Message> selectByUserId(Integer userId);
 
     int updateByPrimaryKeySelective(Message record);

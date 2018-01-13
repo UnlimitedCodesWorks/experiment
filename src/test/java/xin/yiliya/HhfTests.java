@@ -19,8 +19,7 @@ public class HhfTests {
     @Autowired
     UserService userService;
 
-    @Autowired
-    MessageService messageService;
+
 
     @Test
     public void hhfTest() {
@@ -44,14 +43,7 @@ public class HhfTests {
 //        System.out.println(b);
 
 
-    //发送消息
-//        int state=messageService.sendMessage("你好",1,2);
-//        System.out.println(state);
 
-
-        //查询消息
- //       List<Message> messages=messageService.getMessagesByUser(2);
- //       System.out.println(JSON.toJSONString(messages,true));
     }
 
 }

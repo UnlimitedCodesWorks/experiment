@@ -36,4 +36,9 @@ public class MessageServiceImpl implements MessageService {
         return messageMapper.selectByUserId(userId);
 
     }
+
+    @Override
+    public Message getMessage(int userId) {
+        return messageMapper.selectOneByUser(userId);
+    }
 }

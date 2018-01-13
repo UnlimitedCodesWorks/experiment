@@ -108,4 +108,11 @@
     SELECT * FROM `message`
     WHERE `message`.receive_id=#{userId}
   </select>
+
+  <select id="selectOneByUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM `message`
+    WHERE `message`.receive_id=#{userId}
+    ORDER BY msg_time DESC
+    LIMIT 1
+  </select>
 </mapper>
