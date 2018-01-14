@@ -2,6 +2,7 @@ package xin.yiliya.service;
 
 import org.springframework.stereotype.Service;
 import xin.yiliya.pojo.File;
+import xin.yiliya.pojo.Message;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public interface FileService {
     File getFileByPath(String path);
 
 
-    //查看消息所带文件
-    List<File> getFileByMsg(Integer msgId);
+    //用户查看是否有未下载的文件
+    List<File> getFileByMsg(Message message);
 }

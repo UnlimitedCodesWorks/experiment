@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xin.yiliya.dao.MessageMapper;
 import xin.yiliya.pojo.Message;
+import xin.yiliya.pojo.MessagePicture;
 import xin.yiliya.service.MessageService;
 
 import java.util.Date;
@@ -21,10 +22,11 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Integer sendMessage(Message message) {
-
         try{
+            message.setReadStatus(0);
+            message.setMsgTime(new Date());
             messageMapper.insertSelective(message);
-            return 1;
+            return message.getId();
         }catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -33,13 +35,13 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> getMessagesByUser(Integer sendId,Integer receiveId) {
+    public List<MessagePicture> getMessagesByUser(Integer sendId, Integer receiveId) {
         return messageMapper.selectByUserId(sendId,receiveId);
 
     }
 
     @Override
-    public List<Message> getNewMessagesByUser(Integer sendId,Integer receiveId) {
+    public List<MessagePicture> getNewMessagesByUser(Integer sendId,Integer receiveId) {
         return messageMapper.selectNewByUserId(sendId,receiveId);
     }
 

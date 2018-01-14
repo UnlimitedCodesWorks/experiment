@@ -14,12 +14,13 @@ import java.util.List;
 public class PictureServiceImpl implements PictureService {
 
     @Autowired
-    PictureMapper pictureMapper;
+    private PictureMapper pictureMapper;
 
     @Override
     public Integer sendPicture(Picture picture) {
         try{
-        return pictureMapper.insertSelective(picture);
+         pictureMapper.insertSelective(picture);
+         return picture.getId();
         }
         catch (Exception e) {
             e.printStackTrace();

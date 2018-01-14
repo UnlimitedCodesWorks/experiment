@@ -2,6 +2,7 @@ package xin.yiliya.dao;
 
 import org.apache.ibatis.annotations.Param;
 import xin.yiliya.pojo.Message;
+import xin.yiliya.pojo.MessagePicture;
 
 import java.util.Date;
 import java.util.List;
@@ -17,9 +18,9 @@ public interface MessageMapper {
 
     Message selectOneByUser(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
-    List<Message> selectByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
+    List<MessagePicture> selectByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
-    List<Message> selectNewByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
+    List<MessagePicture> selectNewByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
     int updateByPrimaryKeySelective(Message record);
 

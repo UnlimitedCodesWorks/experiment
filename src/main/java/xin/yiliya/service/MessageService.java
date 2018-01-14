@@ -2,6 +2,7 @@ package xin.yiliya.service;
 
 import org.springframework.stereotype.Service;
 import xin.yiliya.pojo.Message;
+import xin.yiliya.pojo.MessagePicture;
 import xin.yiliya.pojo.User;
 
 import java.util.Date;
@@ -20,13 +21,13 @@ public interface MessageService {
     //查询历史消息
     //参数：接收用户的Id（userId）
     //返回List对象
-    List<Message> getMessagesByUser(Integer sendId,Integer receiveId);
+    List<MessagePicture> getMessagesByUser(Integer sendId, Integer receiveId);
 
 
     //查询未读消息
     //参数：接收用户的Id（userId）
     //返回List对象
-    List<Message> getNewMessagesByUser(Integer sendId,Integer receiveId);
+    List<MessagePicture> getNewMessagesByUser(Integer sendId,Integer receiveId);
 
     //查询最新消息
     //参数：接收用户的id（userId）

@@ -25,7 +25,7 @@
     values (#{id,jdbcType=INTEGER}, #{msgId,jdbcType=INTEGER}, #{imgPath,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Picture">
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Picture" keyProperty="id" useGeneratedKeys="true">
     insert into picture
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

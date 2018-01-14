@@ -30,7 +30,7 @@
       #{receiveId,jdbcType=INTEGER}, #{readStatus,jdbcType=INTEGER}, #{msgTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Message">
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Message" keyProperty="id" useGeneratedKeys="true">
     insert into message
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -110,18 +110,42 @@
     WHERE `message`.receive_id=#{receiveId}
     AND   `message`.send_id=#{sendId}
   </update>
-
-  <select id="selectByUserId" parameterType="Integer" resultMap="BaseResultMap">
-    SELECT * FROM `message`
-    WHERE `message`.receive_id=#{receiveId}
-    AND   `message`.send_id=#{sendId}
-    AND   `message`.read_status=1
+  <resultMap id="BaseResultMap_1" type="MessagePicture">
+    <association property="message" column="id" javaType="message" >
+      <id property="id" column="id" />
+      <result property="content" column="content" />
+      <result property="msgTime" column="msg_time" />
+      <result property="readStatus" column="read_status" />
+      <result property="receiveId" column="receive_id" />
+      <result property="sendId" column="send_id" />
+    </association>
+    <association property="picture" column="id1" javaType="picture">
+      <id property="id" column="id1" />
+      <result property="imgPath" column="img_path" />
+      <result property="msgId" column="msg_id" />
+    </association>
+  </resultMap>
+  <select id="selectByUserId" parameterType="Integer" resultMap="BaseResultMap_1">
+    SELECT
+	*
+    FROM
+	`message` LEFT JOIN picture ON message.id = picture.msg_id
+    WHERE
+	`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId}
+    AND `message`.read_status = 1
+    AND `message`.content !='/fileNull/'
   </select>
-  <select id="selectNewByUserId" parameterType="Integer" resultMap="BaseResultMap">
-    SELECT * FROM `message`
-    WHERE `message`.receive_id=#{receiveId}
-    AND   `message`.send_id=#{sendId}
-    AND   `message`.read_status=0
+  <select id="selectNewByUserId" parameterType="Integer" resultMap="BaseResultMap_1">
+    SELECT
+	*
+    FROM
+	`message` LEFT JOIN picture ON message.id = picture.msg_id
+    WHERE
+	`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId}
+    AND `message`.read_status = 0
+    AND `message`.content !='/fileNull/'
   </select>
 
   <select id="selectOneByUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">

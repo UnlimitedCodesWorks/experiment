@@ -1,6 +1,7 @@
 package xin.yiliya.dao;
 
 import xin.yiliya.pojo.File;
+import xin.yiliya.pojo.Message;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface FileMapper {
 
     File selectByPath(String path);
 
-    List<File> selectByMsg(Integer msgId);
+    List<File> selectByMsg(Message message);
 
     int updateByPrimaryKeySelective(File record);
 

@@ -27,7 +27,7 @@
     values (#{id,jdbcType=INTEGER}, #{filePath,jdbcType=VARCHAR}, #{msgId,jdbcType=INTEGER}, 
       #{fileName,jdbcType=VARCHAR}, #{loadStatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="xin.yiliya.pojo.File">
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.File" keyProperty="id" useGeneratedKeys="true">
     insert into file
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -94,8 +94,11 @@
     SELECT * FROM `file`
     WHERE `file`.file_path=#{path}
   </select>
-  <select id="selectByMsg" parameterType="Integer" resultMap="BaseResultMap">
-    SELECT * FROM `file`
-    WHERE `file`.msg_id=#{msgId}
+  <select id="selectByMsg" parameterType="xin.yiliya.pojo.Message" resultMap="BaseResultMap">
+    SELECT file.* FROM `file`,message
+    WHERE `file`.msg_id = message.id
+    AND message.receive_id = #{receiveId}
+    AND message.send_id = #{sendId}
+    AND load_status = 0
   </select>
 </mapper>
