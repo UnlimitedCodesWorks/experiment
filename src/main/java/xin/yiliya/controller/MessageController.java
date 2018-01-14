@@ -38,7 +38,6 @@ public class MessageController {
     public Integer readMsg(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
         return messageService.readMessage(sendId,receiveId);
     }
-    
 
     /**
      *用户查看历史消息
