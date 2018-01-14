@@ -68,4 +68,14 @@
       img_path = #{imgPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByPath" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM `picture`
+    WHERE `picture`.img_path=#{path}
+  </select>
+
+  <select id="selectByMsg" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM `picture`
+    WHERE `picture`.msg_id=#{msgId}
+  </select>
 </mapper>

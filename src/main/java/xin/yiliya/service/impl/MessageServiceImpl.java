@@ -32,7 +32,25 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Message getMessage(int userId) {
+    public List<Message> getNewMessagesByUser(int userId) {
+        return messageMapper.selectNewByUserId(userId);
+    }
+
+    @Override
+    public Message getLatestMessage(int userId) {
         return messageMapper.selectOneByUser(userId);
     }
+
+    @Override
+    public Integer deleteMessage(Integer id) {
+
+        return messageMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public Integer readMessage(Message message) {
+        return messageMapper.updateByPrimaryKeySelective(message);
+    }
+
+
 }

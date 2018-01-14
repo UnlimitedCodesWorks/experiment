@@ -90,4 +90,12 @@
       load_status = #{loadStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByPath" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM `file`
+    WHERE `file`.file_path=#{path}
+  </select>
+  <select id="selectByMsg" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM `file`
+    WHERE `file`.msg_id=#{msgId}
+  </select>
 </mapper>

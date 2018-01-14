@@ -2,6 +2,7 @@ package xin.yiliya.dao;
 
 import xin.yiliya.pojo.Message;
 
+import java.util.Date;
 import java.util.List;
 
 public interface MessageMapper {
@@ -16,6 +17,8 @@ public interface MessageMapper {
     Message selectOneByUser(Integer userId);
 
     List<Message> selectByUserId(Integer userId);
+
+    List<Message> selectNewByUserId(Integer userId);
 
     int updateByPrimaryKeySelective(Message record);
 
