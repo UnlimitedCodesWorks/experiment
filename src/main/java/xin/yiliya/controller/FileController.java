@@ -81,7 +81,7 @@ public class FileController {
      * @param file
      * @return 已下载则返回1，未下载则返回0
      */
-    @RequestMapping(value = "/dwlFile",method = RequestMethod.GET)
+    @RequestMapping(value = "/dwlFile",method = RequestMethod.POST)
     public Integer dwlFile(File file){
 
         return fileService.dwlFile(file);
