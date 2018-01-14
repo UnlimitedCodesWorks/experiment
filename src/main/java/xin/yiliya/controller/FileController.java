@@ -26,21 +26,21 @@ public class FileController {
     /**
      *用户只发送文件
      * @param file
-     * @param userId
+     * @param sendId
      * @param receiveId
      * @return 发送成功返回1，否则返回0
      */
     @RequestMapping(value = "/sendFileOnly",method = RequestMethod.POST)
-    public Integer sendFileOnly(File file, @RequestParam("userId") Integer userId, @RequestParam("receiveId") Integer receiveId) {
+    public Integer sendFileOnly(File file, @RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
         Message message = new Message();
         Date now = new Date();
         message.setMsgTime(now);
-        message.setSendId(userId);
+        message.setSendId(sendId);
         message.setReceiveId(receiveId);
         message.setReadStatus(0);
         message.setContent("/null/");
         messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(receiveId);
+        Message message1 = messageService.getLatestMessage(sendId,receiveId);
         file.setMsgId(message1.getId());
         return fileService.sendFile(file);
 
@@ -56,7 +56,7 @@ public class FileController {
     @RequestMapping(value = "/sendFile",method = RequestMethod.POST)
     public Integer sendFile(File file,Message message) {
         messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(message.getReceiveId());
+        Message message1 = messageService.getLatestMessage(message.getSendId(),message.getReceiveId());
         file.setMsgId(message1.getId());
         return fileService.sendFile(file);
 

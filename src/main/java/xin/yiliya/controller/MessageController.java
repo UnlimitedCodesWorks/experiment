@@ -26,24 +26,17 @@ public class MessageController {
     }
 
 
-    /**
-     *用户接收最新消息
-     * @param userId
-     * @return 返回最新消息对象
-     */
-    @RequestMapping(value = "/receiveMsg",method = RequestMethod.GET)
-    public Message receiveMsg(@RequestParam("userId") Integer userId){
-        return messageService.getLatestMessage(userId);
-    }
+
 
     /**
      *用户阅读消息
-     * @param message
+     * @param sendId
+     * @param receiveId
      * @return 已阅读则返回1，否则返回0
      */
     @RequestMapping(value = "/readMsg",method = RequestMethod.POST)
-    public Integer readMsg(Message message){
-        return messageService.readMessage(message);
+    public Integer readMsg(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
+        return messageService.readMessage(sendId,receiveId);
     }
 
     /**
@@ -58,22 +51,24 @@ public class MessageController {
 
     /**
      *用户查看历史消息
-     * @param userId
+     * @param sendId
+     * @param receiveId
      * @return 返回历史消息的List对象
      */
     @RequestMapping(value = "/historyMsg",method = RequestMethod.GET)
-    public List<Message> historyMsg(@RequestParam("userId") Integer userId){
-        return messageService.getMessagesByUser(userId);
+    public List<Message> historyMsg(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
+        return messageService.getMessagesByUser(sendId,receiveId);
     }
 
     /**
      *用户查看未读消息
-     * @param userId
+     * @param sendId
+     * @param receiveId
      * @return 返回未读消息的List对象
      */
     @RequestMapping(value = "/newMsgs",method = RequestMethod.GET)
-    public List<Message> newMsgs(@RequestParam("userId") Integer userId){
-        return messageService.getNewMessagesByUser(userId);
+    public List<Message> newMsgs(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
+        return messageService.getNewMessagesByUser(sendId,receiveId);
     }
 
 }

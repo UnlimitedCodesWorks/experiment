@@ -22,34 +22,54 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Integer sendMessage(Message message) {
 
-        return messageMapper.insertSelective(message);
+        try{
+            messageMapper.insertSelective(message);
+            return 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+
     }
 
     @Override
-    public List<Message> getMessagesByUser(int userId) {
-        return messageMapper.selectByUserId(userId);
+    public List<Message> getMessagesByUser(Integer sendId,Integer receiveId) {
+        return messageMapper.selectByUserId(sendId,receiveId);
 
     }
 
     @Override
-    public List<Message> getNewMessagesByUser(int userId) {
-        return messageMapper.selectNewByUserId(userId);
+    public List<Message> getNewMessagesByUser(Integer sendId,Integer receiveId) {
+        return messageMapper.selectNewByUserId(sendId,receiveId);
     }
 
     @Override
-    public Message getLatestMessage(int userId) {
-        return messageMapper.selectOneByUser(userId);
+    public Message getLatestMessage(Integer sendId,Integer receiveId) {
+        return messageMapper.selectOneByUser(sendId,receiveId);
     }
 
     @Override
     public Integer deleteMessage(Integer id) {
 
-        return messageMapper.deleteByPrimaryKey(id);
+        try {
+            messageMapper.deleteByPrimaryKey(id);
+            return 1;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+
     }
 
     @Override
-    public Integer readMessage(Message message) {
-        return messageMapper.updateByPrimaryKeySelective(message);
+    public Integer readMessage(Integer sendId,Integer receiveId) {
+
+        try {
+            return   messageMapper.updateByUser(sendId,receiveId);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 

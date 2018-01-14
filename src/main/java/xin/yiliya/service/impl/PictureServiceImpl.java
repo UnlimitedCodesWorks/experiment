@@ -18,7 +18,13 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public Integer sendPicture(Picture picture) {
+        try{
         return pictureMapper.insertSelective(picture);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

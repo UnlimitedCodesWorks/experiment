@@ -28,21 +28,21 @@ public class PictureController {
     /**
      *用户只发送图片
      * @param picture
-     * @param userId
+     * @param sendId
      * @param receiveId
      * @return 发送成功返回1，否则返回0
      */
     @RequestMapping(value = "/sendPicOnly",method = RequestMethod.POST)
-    public Integer sendPicOnly(Picture picture,@RequestParam("userId") Integer userId,@RequestParam("receiveId") Integer receiveId) {
+    public Integer sendPicOnly(Picture picture,@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId) {
         Message message = new Message();
         Date now = new Date();
         message.setMsgTime(now);
-        message.setSendId(userId);
+        message.setSendId(sendId);
         message.setReceiveId(receiveId);
         message.setReadStatus(0);
         message.setContent("/null/");
         messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(receiveId);
+        Message message1 = messageService.getLatestMessage(sendId,receiveId);
         picture.setMsgId(message1.getId());
         return pictureService.sendPicture(picture);
 
@@ -60,7 +60,7 @@ public class PictureController {
     public Integer sendPic(Picture picture,Message message) {
 
         messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(message.getReceiveId());
+        Message message1 = messageService.getLatestMessage(message.getSendId(),message.getReceiveId());
         picture.setMsgId(message1.getId());
         return pictureService.sendPicture(picture);
 

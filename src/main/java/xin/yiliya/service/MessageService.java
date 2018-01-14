@@ -20,18 +20,18 @@ public interface MessageService {
     //查询历史消息
     //参数：接收用户的Id（userId）
     //返回List对象
-    List<Message> getMessagesByUser(int userId);
+    List<Message> getMessagesByUser(Integer sendId,Integer receiveId);
 
 
     //查询未读消息
     //参数：接收用户的Id（userId）
     //返回List对象
-    List<Message> getNewMessagesByUser(int userId);
+    List<Message> getNewMessagesByUser(Integer sendId,Integer receiveId);
 
     //查询最新消息
     //参数：接收用户的id（userId）
     //返回Message对象
-    Message getLatestMessage(int userId);
+    Message getLatestMessage(Integer sendId,Integer receiveId);
 
     //删除消息
     //参数：消息id
@@ -41,7 +41,7 @@ public interface MessageService {
 
     //阅读消息
     //已阅读则返回1，否则返回0
-    Integer readMessage(Message message);
+    Integer readMessage(Integer sendId,Integer receiveId);
 
 
 

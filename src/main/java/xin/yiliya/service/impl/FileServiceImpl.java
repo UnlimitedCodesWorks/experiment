@@ -19,12 +19,23 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Integer sendFile(File file) {
-        return fileMapper.insertSelective(file);
+        try {
+            return fileMapper.insertSelective(file);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
     public Integer dwlFile(File file) {
-        return fileMapper.updateByPrimaryKeySelective(file);
+        try{
+            fileMapper.updateByPrimaryKeySelective(file);
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

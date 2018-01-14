@@ -39,11 +39,11 @@ public class ExperimentApplicationTests {
 
 
 		//查询历史消息
-//       List<Message> messages=messageService.getMessagesByUser(2);
+//       List<Message> messages=messageService.getMessagesByUser(1,2);
 //       System.out.println(JSON.toJSONString(messages,true));
 
 		//查询最新消息
-//       Message message=messageService.getMessage(2);
+//      Message message=messageService.getLatestMessage(1,2);
 //       System.out.println(JSON.toJSONString(message));
 
 

@@ -1,5 +1,6 @@
 package xin.yiliya.dao;
 
+import org.apache.ibatis.annotations.Param;
 import xin.yiliya.pojo.Message;
 
 import java.util.Date;
@@ -14,13 +15,15 @@ public interface MessageMapper {
 
     Message selectByPrimaryKey(Integer id);
 
-    Message selectOneByUser(Integer userId);
+    Message selectOneByUser(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
-    List<Message> selectByUserId(Integer userId);
+    List<Message> selectByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
-    List<Message> selectNewByUserId(Integer userId);
+    List<Message> selectNewByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
     int updateByPrimaryKeySelective(Message record);
 
     int updateByPrimaryKey(Message record);
+
+    int updateByUser(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 }

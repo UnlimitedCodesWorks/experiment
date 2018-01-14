@@ -104,20 +104,30 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <update id="updateByUser" parameterType="xin.yiliya.pojo.Message">
+    update message
+    set read_status = 1,
+    WHERE `message`.receive_id=#{receiveId}
+    AND   `message`.send_id=#{sendId}
+  </update>
+
   <select id="selectByUserId" parameterType="Integer" resultMap="BaseResultMap">
     SELECT * FROM `message`
-    WHERE `message`.receive_id=#{userId}
+    WHERE `message`.receive_id=#{receiveId}
+    AND   `message`.send_id=#{sendId}
     AND   `message`.read_status=1
   </select>
   <select id="selectNewByUserId" parameterType="Integer" resultMap="BaseResultMap">
     SELECT * FROM `message`
-    WHERE `message`.receive_id=#{userId}
+    WHERE `message`.receive_id=#{receiveId}
+    AND   `message`.send_id=#{sendId}
     AND   `message`.read_status=0
   </select>
 
   <select id="selectOneByUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     SELECT * FROM `message`
-    WHERE `message`.receive_id=#{userId}
+    WHERE `message`.receive_id=#{receiveId}
+    AND   `message`.send_id=#{sendId}
     ORDER BY msg_time DESC
     LIMIT 1
   </select>
