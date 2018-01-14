@@ -30,7 +30,7 @@
       #{receiveId,jdbcType=INTEGER}, #{readStatus,jdbcType=INTEGER}, #{msgTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Message">
+  <insert id="insertSelective" parameterType="xin.yiliya.pojo.Message" keyProperty="id" useGeneratedKeys="true">
     insert into message
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

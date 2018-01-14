@@ -12,8 +12,7 @@ import java.util.List;
 public class MessageController {
 
     @Autowired
-    MessageService messageService;
-
+    private MessageService messageService;
 
     /**
      *用户发送消息
@@ -24,7 +23,7 @@ public class MessageController {
     public Integer sendMsg(Message message){
         return messageService.sendMessage(message);
     }
-
+    
 
 
 
@@ -38,6 +37,7 @@ public class MessageController {
     public Integer readMsg(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
         return messageService.readMessage(sendId,receiveId);
     }
+
 
     /**
      *用户查看历史消息
@@ -56,12 +56,10 @@ public class MessageController {
      * @param receiveId
      * @return 返回未读消息的List对象
      */
-    @RequestMapping(value = "/newMsgs",method = RequestMethod.POST)
+    @RequestMapping(value = "/newMsgs",method = RequestMethod.GET)
     public List<Message> newMsgs(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
         List<Message> messages= messageService.getNewMessagesByUser(sendId,receiveId);
-        for(Message msg:messages){
-            messageService.readMessage(msg.getSendId(),msg.getReceiveId());
-        }
+        messageService.readMessage(sendId,receiveId);
         return messages;
     }
 

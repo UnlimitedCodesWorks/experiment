@@ -21,10 +21,10 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Integer sendMessage(Message message) {
-
         try{
+            message.setReadStatus(0);
             messageMapper.insertSelective(message);
-            return 1;
+            return message.getId();
         }catch (Exception e) {
             e.printStackTrace();
             return 0;
