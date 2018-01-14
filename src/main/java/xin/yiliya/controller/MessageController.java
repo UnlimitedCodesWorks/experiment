@@ -38,7 +38,11 @@ public class MessageController {
     public Integer readMsg(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
         return messageService.readMessage(sendId,receiveId);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> parent of c06adb6... 更改
 
     /**
      *用户查看历史消息
