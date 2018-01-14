@@ -18,12 +18,11 @@ import java.util.List;
 @RequestMapping(value = "/file")
 public class FileController {
 
-    @Autowired
-    private MessageService messageService;
 
     @Autowired
-    private FileService fileService;
-
+    MessageService messageService;
+    @Autowired
+    FileService fileService;
     /**
      *用户只发送文件
      * @param file

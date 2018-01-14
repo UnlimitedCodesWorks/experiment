@@ -20,10 +20,10 @@ import java.util.List;
 public class PictureController {
 
     @Autowired
-    private PictureService pictureService;
-
+    PictureService pictureService;
     @Autowired
-    private MessageService messageService;
+    MessageService messageService;
+
 
     /**
      *用户只发送图片
@@ -46,6 +46,40 @@ public class PictureController {
         return pictureService.sendPicture(picture);
 
     }
+
+
+
+    /**
+     *用户发送消息和图片
+     * @param picture
+     * @param message
+     * @return 发送成功返回1，否则返回0
+     */
+    @RequestMapping(value = "/sendPic",method = RequestMethod.POST)
+    public Integer sendPic(Picture picture,Message message) {
+
+        messageService.sendMessage(message);
+        Message message1 = messageService.getLatestMessage(message.getSendId(),message.getReceiveId());
+        picture.setMsgId(message1.getId());
+        return pictureService.sendPicture(picture);
+
+    }
+
+
+        /**
+         *用户查看消息所带图片
+         * @param message
+         * @return 返回消息所带图片的List对象
+         */
+        @RequestMapping(value = "/readPic",method = RequestMethod.GET)
+        public List<Picture> readPic(Message message){
+
+            return pictureService.getPicturesByMsg(message.getId());
+
+    }
+
+
+
 
 
 
