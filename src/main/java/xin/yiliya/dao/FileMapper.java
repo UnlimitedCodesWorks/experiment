@@ -1,5 +1,6 @@
 package xin.yiliya.dao;
 
+import org.apache.ibatis.annotations.Param;
 import xin.yiliya.pojo.File;
 import xin.yiliya.pojo.Message;
 
@@ -16,7 +17,7 @@ public interface FileMapper {
 
     File selectByPath(String path);
 
-    List<File> selectByMsg(Message message);
+    List<File> selectByMsg(@Param("sendId") Integer sendId,@Param("receiveId") Integer receiveId);
 
     int updateByPrimaryKeySelective(File record);
 

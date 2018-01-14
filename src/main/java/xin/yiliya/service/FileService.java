@@ -24,5 +24,5 @@ public interface FileService {
 
 
     //用户查看是否有未下载的文件
-    List<File> getFileByMsg(Message message);
+    List<File> getFileByMsg(Integer sendId,Integer receiveId);
 }

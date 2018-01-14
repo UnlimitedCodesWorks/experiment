@@ -39,12 +39,13 @@ public class FileController {
 
     /**
      *用户查看是否有未下载的文件
-     * @param message
+     * @param sendId
+     * @param receiveId
      * @return 返回消息所带文件的List对象
      */
     @RequestMapping(value = "/readFile",method = RequestMethod.GET)
-    public List<File> readFile(Message message) {
-        return fileService.getFileByMsg(message);
+    public List<File> readFile(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId) {
+        return fileService.getFileByMsg(sendId,receiveId);
 
     }
 

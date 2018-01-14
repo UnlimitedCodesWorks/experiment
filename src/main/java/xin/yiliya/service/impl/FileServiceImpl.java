@@ -48,7 +48,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public List<File> getFileByMsg(Message message) {
-        return fileMapper.selectByMsg(message);
+    public List<File> getFileByMsg(Integer sendId,Integer receiveId) {
+        return fileMapper.selectByMsg(sendId,receiveId);
     }
 }
