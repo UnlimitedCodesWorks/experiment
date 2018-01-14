@@ -23,7 +23,7 @@ public class MessageController {
     public Integer sendMsg(Message message){
         return messageService.sendMessage(message);
     }
-    
+
 
 
 

@@ -40,39 +40,9 @@ public class FileController {
         message.setReceiveId(receiveId);
         message.setReadStatus(0);
         message.setContent("/null/");
-        messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(sendId,receiveId);
-        file.setMsgId(message1.getId());
+        int msgId=messageService.sendMessage(message);
+        file.setMsgId(msgId);
         return fileService.sendFile(file);
-
-    }
-
-
-    /**
-     *用户发送文件和消息
-     * @param file
-     * @param message
-     * @return 发送成功返回1，否则返回0
-     */
-    @RequestMapping(value = "/sendFile",method = RequestMethod.POST)
-    public Integer sendFile(File file,Message message) {
-        messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(message.getSendId(),message.getReceiveId());
-        file.setMsgId(message1.getId());
-        return fileService.sendFile(file);
-
-    }
-
-
-    /**
-     *用户查看消息所带文件
-     * @param message
-     * @return 返回消息所带文件的List对象
-     */
-    @RequestMapping(value = "/readFile",method = RequestMethod.GET)
-    public List<File> readFile(Message message){
-
-        return fileService.getFileByMsg(message.getId());
 
     }
 

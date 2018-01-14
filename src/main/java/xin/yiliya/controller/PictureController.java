@@ -41,45 +41,11 @@ public class PictureController {
         message.setReceiveId(receiveId);
         message.setReadStatus(0);
         message.setContent("/null/");
-        messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(sendId,receiveId);
-        picture.setMsgId(message1.getId());
+        int msgId= messageService.sendMessage(message);
+        picture.setMsgId(msgId);
         return pictureService.sendPicture(picture);
 
     }
-
-
-
-    /**
-     *用户发送消息和图片
-     * @param picture
-     * @param message
-     * @return 发送成功返回1，否则返回0
-     */
-    @RequestMapping(value = "/sendPic",method = RequestMethod.POST)
-    public Integer sendPic(Picture picture,Message message) {
-        messageService.sendMessage(message);
-        Message message1 = messageService.getLatestMessage(message.getSendId(),message.getReceiveId());
-        picture.setMsgId(message1.getId());
-        return pictureService.sendPicture(picture);
-
-    }
-
-
-        /**
-         *用户查看消息所带图片
-         * @param message
-         * @return 返回消息所带图片的List对象
-         */
-        @RequestMapping(value = "/readPic",method = RequestMethod.GET)
-        public List<Picture> readPic(Message message){
-
-            return pictureService.getPicturesByMsg(message.getId());
-
-    }
-
-
-
 
 
 
