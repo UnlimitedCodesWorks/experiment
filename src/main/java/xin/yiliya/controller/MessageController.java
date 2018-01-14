@@ -18,7 +18,7 @@ public class MessageController {
     /**
      *用户发送消息
      * @param message
-     * @return 发送成功返回1，否则返回0
+     * @return 发送成功返回id，否则返回0
      */
     @RequestMapping(value = "/sendMsg",consumes = "application/json",method = RequestMethod.POST)
     public Integer sendMsg(@RequestBody Message message){
