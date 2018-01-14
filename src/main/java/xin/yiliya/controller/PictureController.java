@@ -20,10 +20,10 @@ import java.util.List;
 public class PictureController {
 
     @Autowired
-    PictureService pictureService;
-    @Autowired
-    MessageService messageService;
+    private PictureService pictureService;
 
+    @Autowired
+    private MessageService messageService;
 
     /**
      *用户只发送图片
@@ -58,7 +58,6 @@ public class PictureController {
      */
     @RequestMapping(value = "/sendPic",method = RequestMethod.POST)
     public Integer sendPic(Picture picture,Message message) {
-
         messageService.sendMessage(message);
         Message message1 = messageService.getLatestMessage(message.getSendId(),message.getReceiveId());
         picture.setMsgId(message1.getId());
