@@ -38,16 +38,7 @@ public class MessageController {
     public Integer readMsg(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
         return messageService.readMessage(sendId,receiveId);
     }
-
-    /**
-     *用户删除消息
-     * @param message
-     * @return 删除成功则返回1，否则返回0
-     */
-    @RequestMapping(value = "/deleteMsg",method = RequestMethod.POST)
-    public Integer deleteMsg(Message message){
-        return messageService.deleteMessage(message.getId());
-    }
+    
 
     /**
      *用户查看历史消息
@@ -66,9 +57,13 @@ public class MessageController {
      * @param receiveId
      * @return 返回未读消息的List对象
      */
-    @RequestMapping(value = "/newMsgs",method = RequestMethod.GET)
+    @RequestMapping(value = "/newMsgs",method = RequestMethod.POST)
     public List<Message> newMsgs(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
-        return messageService.getNewMessagesByUser(sendId,receiveId);
+        List<Message> messages= messageService.getNewMessagesByUser(sendId,receiveId);
+        for(Message msg:messages){
+            messageService.readMessage(msg.getSendId(),msg.getReceiveId());
+        }
+        return messages;
     }
 
 }
