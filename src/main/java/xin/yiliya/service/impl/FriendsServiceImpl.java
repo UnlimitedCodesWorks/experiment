@@ -39,7 +39,7 @@ public class FriendsServiceImpl implements FriendsService{
         try{
             friendsMapper.sureFriend(friends);
             friends.setConfirmStatus(1);
-            friendsMapper.insertSelective(friends);
+            friendsMapper.addFaceFriend(friends);
             return true;
         }catch (Exception e){
             e.printStackTrace();
