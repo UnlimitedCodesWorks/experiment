@@ -49,6 +49,12 @@ public class MessageController {
         return messages;
     }
 
+    /**
+     * 用户查看未读消息数目
+     * @param sendId
+     * @param receiveId
+     * @return 返回未读消息数目
+     */
     @RequestMapping(value = "/newMsgNum",method = RequestMethod.GET)
     public Integer newMsgNum(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
         return messageService.getNewMessagesNum(sendId,receiveId);
