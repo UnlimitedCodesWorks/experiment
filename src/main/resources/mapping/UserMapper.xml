@@ -131,4 +131,8 @@
     SELECT * FROM `user`
     WHERE `user`.id IN (SELECT user_id FROM friends WHERE friend_id=#{userId} AND confirm_status=0)
   </select>
+  <select id="unReadNum" resultType="_int" parameterType="java.lang.Integer">
+    SELECT COUNT(*) FROM `user`
+    WHERE `user`.id IN (SELECT user_id FROM friends WHERE friend_id=#{userId} AND confirm_status=0)
+  </select>
 </mapper>

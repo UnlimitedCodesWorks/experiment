@@ -26,7 +26,7 @@ public class FriendsServiceImpl implements FriendsService{
         try{
             friends.setConfirmStatus(0);
             friendsMapper.insertSelective(friends);
-            friendsMapper.addFaceFriend(friends);
+            //friendsMapper.addFaceFriend(friends);
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -38,6 +38,8 @@ public class FriendsServiceImpl implements FriendsService{
     public Boolean sureFriend(Friends friends) {
         try{
             friendsMapper.sureFriend(friends);
+            friends.setConfirmStatus(1);
+            friendsMapper.insertSelective(friends);
             return true;
         }catch (Exception e){
             e.printStackTrace();

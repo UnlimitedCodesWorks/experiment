@@ -28,4 +28,6 @@ public interface UserMapper {
 
     List<User> usersOfRequireList(Integer userId);
 
+    Integer unReadNum(Integer userId);
+
 }

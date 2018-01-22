@@ -78,4 +78,14 @@ public class UserController {
         return userService.usersOfRequireList(userId);
     }
 
+    /**
+     * 好友申请请求数目
+     * @param userId
+     * @return 好友申请请求数目
+     */
+    @RequestMapping(value = "/applyNum",method = RequestMethod.GET)
+    public Integer getReplyListNum(@RequestParam("userId")Integer userId){
+        return userService.unReadNum(userId);
+    }
+
 }

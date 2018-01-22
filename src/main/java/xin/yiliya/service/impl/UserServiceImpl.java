@@ -75,4 +75,9 @@ public class UserServiceImpl implements UserService{
         return userMapper.usersOfRequireList(userId);
     }
 
+    @Override
+    public Integer unReadNum(Integer userId) {
+        return userMapper.unReadNum(userId);
+    }
+
 }

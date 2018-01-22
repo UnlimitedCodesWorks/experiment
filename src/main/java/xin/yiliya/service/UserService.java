@@ -52,4 +52,11 @@ public interface UserService {
      */
     List<User> usersOfRequireList(Integer userId);
 
+    /**
+     * 好友申请请求数目
+     * @param userId
+     * @return 好友申请请求的数目
+     */
+    Integer unReadNum(Integer userId);
+
 }
