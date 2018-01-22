@@ -58,6 +58,11 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public Integer getNewMessagesNum(Integer sendId, Integer receiveId) {
+        return messageMapper.getNewMessagesNum(sendId,receiveId);
+    }
+
+    @Override
     public Message getLatestMessage(Integer sendId,Integer receiveId) {
         return messageMapper.selectOneByUser(sendId,receiveId);
     }

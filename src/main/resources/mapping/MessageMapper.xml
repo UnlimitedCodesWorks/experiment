@@ -159,6 +159,16 @@
     ORDER BY msg_time DESC
     LIMIT 1
   </select>
+  <select id="getNewMessagesNum" resultType="_int" parameterType="java.lang.Integer">
+    SELECT
+	COUNT(*)
+    FROM
+	`message` LEFT JOIN picture ON message.id = picture.msg_id
+    WHERE
+	`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId}
+    AND `message`.read_status = 0
+  </select>
 
 
 </mapper>

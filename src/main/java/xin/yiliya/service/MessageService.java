@@ -29,6 +29,9 @@ public interface MessageService {
     //返回List对象
     List<MessagePicture> getNewMessagesByUser(Integer sendId,Integer receiveId);
 
+    //查询未读消息数目
+    Integer getNewMessagesNum(Integer sendId,Integer receiveId);
+
     //查询最新消息
     //参数：接收用户的id（userId）
     //返回Message对象
@@ -43,7 +46,5 @@ public interface MessageService {
     //阅读消息
     //已阅读则返回1，否则返回0
     Integer readMessage(Integer sendId,Integer receiveId);
-
-
 
 }

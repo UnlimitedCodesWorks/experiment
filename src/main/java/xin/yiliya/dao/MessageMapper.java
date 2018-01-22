@@ -22,6 +22,8 @@ public interface MessageMapper {
 
     List<MessagePicture> selectNewByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
+    Integer getNewMessagesNum(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
+
     int updateByPrimaryKeySelective(Message record);
 
     int updateByPrimaryKey(Message record);

@@ -49,4 +49,9 @@ public class MessageController {
         return messages;
     }
 
+    @RequestMapping(value = "/newMsgNum",method = RequestMethod.GET)
+    public Integer newMsgNum(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
+        return messageService.getNewMessagesNum(sendId,receiveId);
+    }
+
 }
