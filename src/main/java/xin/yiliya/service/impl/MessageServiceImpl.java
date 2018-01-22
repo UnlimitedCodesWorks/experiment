@@ -84,7 +84,7 @@ public class MessageServiceImpl implements MessageService {
     public Integer readMessage(Integer sendId,Integer receiveId) {
 
         try {
-            return   messageMapper.updateByUser(sendId,receiveId);
+            return messageMapper.updateByUser(sendId,receiveId);
         }catch (Exception e) {
             e.printStackTrace();
             return 0;

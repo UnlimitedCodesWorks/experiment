@@ -106,7 +106,7 @@
 
   <update id="updateByUser" parameterType="xin.yiliya.pojo.Message">
     update message
-    set read_status = 1,
+    set read_status = 1
     WHERE `message`.receive_id=#{receiveId}
     AND   `message`.send_id=#{sendId}
   </update>
