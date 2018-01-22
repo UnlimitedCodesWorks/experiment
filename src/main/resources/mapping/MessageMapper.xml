@@ -131,8 +131,10 @@
     FROM
 	`message` LEFT JOIN picture ON message.id = picture.msg_id
     WHERE
-	`message`.receive_id = #{receiveId}
-    AND `message`.send_id = #{sendId}
+	(`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId})
+    OR (`message`.receive_id = #{sendId}
+    AND `message`.send_id = #{receiveId})
     AND `message`.read_status = 1
     AND `message`.content !='/fileNull/'
   </select>
@@ -142,8 +144,10 @@
     FROM
 	`message` LEFT JOIN picture ON message.id = picture.msg_id
     WHERE
-	`message`.receive_id = #{receiveId}
-    AND `message`.send_id = #{sendId}
+	(`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId})
+    OR (`message`.receive_id = #{sendId}
+    AND `message`.send_id = #{receiveId})
     AND `message`.read_status = 0
     AND `message`.content !='/fileNull/'
   </select>

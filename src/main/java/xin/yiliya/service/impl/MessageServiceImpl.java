@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xin.yiliya.dao.MessageMapper;
+import xin.yiliya.dao.UserMapper;
 import xin.yiliya.pojo.Message;
 import xin.yiliya.pojo.MessagePicture;
+import xin.yiliya.pojo.User;
 import xin.yiliya.service.MessageService;
 
 import java.util.Date;
@@ -17,8 +19,8 @@ public class MessageServiceImpl implements MessageService {
     @Autowired
     private MessageMapper messageMapper;
 
-
-
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public Integer sendMessage(Message message) {
@@ -36,13 +38,23 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<MessagePicture> getMessagesByUser(Integer sendId, Integer receiveId) {
-        return messageMapper.selectByUserId(sendId,receiveId);
+        List<MessagePicture> messagePictures = messageMapper.selectByUserId(sendId,receiveId);
+        for(MessagePicture messagePicture:messagePictures){
+            Message message =messagePicture.getMessage();
+            message.setSender(userMapper.selectByPrimaryKey(message.getSendId()));
+        }
+        return messagePictures;
 
     }
 
     @Override
     public List<MessagePicture> getNewMessagesByUser(Integer sendId,Integer receiveId) {
-        return messageMapper.selectNewByUserId(sendId,receiveId);
+        List<MessagePicture> messagePictures = messageMapper.selectNewByUserId(sendId,receiveId);
+        for(MessagePicture messagePicture:messagePictures){
+            Message message =messagePicture.getMessage();
+            message.setSender(userMapper.selectByPrimaryKey(message.getSendId()));
+        }
+        return messagePictures;
     }
 
     @Override
