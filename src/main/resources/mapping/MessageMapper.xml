@@ -137,6 +137,7 @@
     AND `message`.send_id = #{receiveId}))
     AND `message`.read_status = 1
     AND `message`.content !='/fileNull/'
+    ORDER BY msg_time DESC
   </select>
   <select id="selectNewByUserId" parameterType="Integer" resultMap="BaseResultMap_1">
     SELECT

@@ -50,11 +50,11 @@ public class FileController {
     }
 
     /**
-     *用户下载文件
+     *用户取消下载文件
      * @param file
      * @return 修改完成返回1,失败返回0
      */
-    @RequestMapping(value = "/dwlFile",consumes = "application/json",method = RequestMethod.POST)
+    @RequestMapping(value = "/unDwlFile",consumes = "application/json",method = RequestMethod.POST)
     public Integer dwlFile(@RequestBody File file){
         return fileService.dwlFile(file);
 

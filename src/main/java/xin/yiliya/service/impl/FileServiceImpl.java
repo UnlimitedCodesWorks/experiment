@@ -33,7 +33,7 @@ public class FileServiceImpl implements FileService {
     @Override
     public Integer dwlFile(File file) {
         try{
-            file.setLoadStatus(1);
+            file.setLoadStatus(0);
             fileMapper.updateByPrimaryKeySelective(file);
             return 1;
         } catch (Exception e) {
@@ -49,6 +49,11 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public List<File> getFileByMsg(Integer sendId,Integer receiveId) {
-        return fileMapper.selectByMsg(sendId,receiveId);
+        List<File> fileList = fileMapper.selectByMsg(sendId,receiveId);
+        for(File file:fileList){
+            file.setLoadStatus(1);
+            fileMapper.updateByPrimaryKeySelective(file);
+        }
+        return fileList;
     }
 }
