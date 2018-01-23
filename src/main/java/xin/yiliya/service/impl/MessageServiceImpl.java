@@ -10,6 +10,7 @@ import xin.yiliya.pojo.MessagePicture;
 import xin.yiliya.pojo.User;
 import xin.yiliya.service.MessageService;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +56,21 @@ public class MessageServiceImpl implements MessageService {
             message.setSender(userMapper.selectByPrimaryKey(message.getSendId()));
         }
         return messagePictures;
+    }
+
+    @Override
+    public List<MessagePicture> getRecentMessage(Integer sendId, Integer receiveId) {
+        List<MessagePicture> messagePictures = messageMapper.selectNewByUserId1(sendId,receiveId);
+        Date date = new Date();
+        if (messagePictures.size()!=0){
+            date = messagePictures.get(0).getMessage().getMsgTime();
+        }
+        List<MessagePicture> messagePictureList = messageMapper.selectRecentNewByUserId(sendId,receiveId,date);
+        for(MessagePicture messagePicture:messagePictureList){
+            Message message =messagePicture.getMessage();
+            message.setSender(userMapper.selectByPrimaryKey(message.getSendId()));
+        }
+        return messagePictureList;
     }
 
     @Override

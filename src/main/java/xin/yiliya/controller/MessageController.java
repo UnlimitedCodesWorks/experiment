@@ -50,6 +50,19 @@ public class MessageController {
     }
 
     /**
+     * 用户查看最近消息
+     * @param sendId
+     * @param receiveId
+     * @return 返回最近消息的List对象
+     */
+    @RequestMapping(value = "/recentMsgs",method = RequestMethod.GET)
+    public List<MessagePicture> recentMsgs(@RequestParam("sendId") Integer sendId,@RequestParam("receiveId") Integer receiveId){
+        List<MessagePicture> messages= messageService.getRecentMessage(sendId,receiveId);
+        messageService.readMessage(sendId,receiveId);
+        return messages;
+    }
+
+    /**
      * 用户查看未读消息数目
      * @param sendId
      * @param receiveId

@@ -22,6 +22,10 @@ public interface MessageMapper {
 
     List<MessagePicture> selectNewByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
+    List<MessagePicture> selectNewByUserId1(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
+
+    List<MessagePicture> selectRecentNewByUserId(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId,@Param("date")Date date);
+
     Integer getNewMessagesNum(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
 
     int updateByPrimaryKeySelective(Message record);
@@ -29,4 +33,6 @@ public interface MessageMapper {
     int updateByPrimaryKey(Message record);
 
     int updateByUser(@Param("sendId")Integer sendId, @Param("receiveId")Integer receiveId);
+
+
 }

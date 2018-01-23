@@ -131,10 +131,10 @@
     FROM
 	`message` LEFT JOIN picture ON message.id = picture.msg_id
     WHERE
-	(`message`.receive_id = #{receiveId}
+	((`message`.receive_id = #{receiveId}
     AND `message`.send_id = #{sendId})
     OR (`message`.receive_id = #{sendId}
-    AND `message`.send_id = #{receiveId})
+    AND `message`.send_id = #{receiveId}))
     AND `message`.read_status = 1
     AND `message`.content !='/fileNull/'
   </select>
@@ -144,12 +144,35 @@
     FROM
 	`message` LEFT JOIN picture ON message.id = picture.msg_id
     WHERE
-	(`message`.receive_id = #{receiveId}
-    AND `message`.send_id = #{sendId})
-    OR (`message`.receive_id = #{sendId}
-    AND `message`.send_id = #{receiveId})
+	`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId}
     AND `message`.read_status = 0
     AND `message`.content !='/fileNull/'
+  </select>
+    <select id="selectNewByUserId1" parameterType="Integer" resultMap="BaseResultMap_1">
+        SELECT
+        *
+        FROM
+        `message` LEFT JOIN picture ON message.id = picture.msg_id
+        WHERE
+        `message`.receive_id = #{receiveId}
+        AND `message`.send_id = #{sendId}
+        AND `message`.read_status = 0
+        AND `message`.content !='/fileNull/'
+        ORDER BY `message`.msg_time ASC
+    </select>
+  <select id="selectRecentNewByUserId" resultMap="BaseResultMap_1">
+    SELECT
+	*
+    FROM
+	`message` LEFT JOIN picture ON message.id = picture.msg_id
+    WHERE
+	((`message`.receive_id = #{receiveId}
+    AND `message`.send_id = #{sendId})
+    OR (`message`.receive_id = #{sendId}
+    AND `message`.send_id = #{receiveId}))
+    AND `message`.content !='/fileNull/'
+    AND `message`.msg_time >= #{date}
   </select>
 
   <select id="selectOneByUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">

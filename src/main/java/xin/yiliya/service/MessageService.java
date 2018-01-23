@@ -29,6 +29,9 @@ public interface MessageService {
     //返回List对象
     List<MessagePicture> getNewMessagesByUser(Integer sendId,Integer receiveId);
 
+    //查询最近消息
+    List<MessagePicture> getRecentMessage(Integer sendId,Integer receiveId);
+
     //查询未读消息数目
     Integer getNewMessagesNum(Integer sendId,Integer receiveId);
 
